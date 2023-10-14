@@ -9,6 +9,14 @@ def speak (audio):
     engine.say (audio)
     engine.runAndWait()
 
+import spacy
+
+nlp = spacy.load("en_core_web_sm")
+doc = nlp(command)
+for token in doc:
+    print(token.text, token.pos_, token.dep_)
+
+
 def time():
     Time = datetime.datetime.now().strftime('%I:%M:%S')
     speak(Time)
